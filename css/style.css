@@ -1,0 +1,275 @@
+/*@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900);*/
+
+a{
+	text-decoration: none;
+	color:black;
+}
+
+li a{
+	vertical-align: top;
+}
+
+
+h1{
+	background-color: white;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica;
+	font-size: 100px;
+	font-weight: 100;
+	margin-left:100px;
+	margin-bottom:0px;
+}
+
+h2{
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica;
+	font-size: 50px;
+	font-weight: 100;
+	margin-top: 0px;
+}
+
+div{
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica;
+	font-weight: 100;
+	font-size: 20px;
+}
+
+.intro{
+	margin:50px;
+    position:relative;
+    height:100px;
+}
+
+.nav{
+	height: 50px;
+	width: 150px;
+	font-size: 25px;
+	line-height: 50px;
+	background-color:#F2F2F2;
+	float:left;
+	margin-right:20px;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 10px;
+}
+
+.nav:hover{
+	font-weight:200;
+	background-color:#E2E2E2;
+
+}
+
+.sectionW{
+	margin-left: 0px;
+	/*height:800px;*/
+	background-color: #FFFFFF;
+	padding:50px;
+	font-weight: 200;
+	line-height: 150%;
+}
+
+.sectionG{
+	margin-left: 0px;
+	background-color: #F2F2F2;
+	padding: 50px;
+	font-weight: 200;
+	line-height: 120%;
+	height: 300px;
+}
+
+.sectionG a{
+	color:#567880;
+}
+
+#aboutme{
+	margin-top: 5px;
+}
+
+#projects{
+	height: 1100px;
+}
+
+.skillsTable td {
+	border-left: 1px solid  #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	padding: 10px;
+	line-height: 150%;
+	font-weight: 200;
+	font-size: 20px;
+	float:left;
+}
+
+.col{
+	border-bottom: 1px solid #E2E2E2;
+	border-left: 1px solid  #E2E2E2;
+	border-right: 1px solid #E2E2E2;
+	padding: 30px;
+	padding-right: 40px;
+	padding-left: 40px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-size: 20px;
+}
+
+.row{
+	border-bottom: 1px solid #E2E2E2;
+	border-right: 1px solid #E2E2E2;
+	border-top: 1px solid #E2E2E2;
+	padding: 30px;
+	padding-right: 40px;
+	padding-left: 40px;
+	margin-right: 0px;
+	margin-left: 0px;
+	font-size: 20px;
+
+}
+
+
+#blank{
+	border:none;
+}
+
+.pro{
+	color:green;
+	font-size: 50;
+}
+
+.medium{
+	color:#FDDB6E;
+	font-size: 50;
+}
+
+.low{
+	color:#fd2d2d;
+	font-size: 50;
+}
+
+li span{
+	color:black;
+	font-size: 25;
+	vertical-align: top;
+}
+
+.date{
+	font-weight: 100;
+	float:right;
+}
+
+.subtitle{
+	float:left;
+	font-weight: bold;
+}
+
+.links{
+	margin-left: 100px;
+	width: 510px;
+
+}
+
+#scroll{
+    font-size: 10px;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display:block;
+}
+
+img{
+	float:right;
+	font-size: 5px;
+	margin-top: 10px;
+	width: 20%;
+	height: auto;
+	width:auto;
+	max-width: 225px;
+	max-height: 225px;
+	vertical-align: top;
+}
+
+td img{
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+
+table{
+	margin-top: 1px;
+}
+
+#link{
+	float:bottom;
+}
+
+.project{
+	border: none;
+	float:right;
+}
+
+.project td{
+	padding-top: 10px;
+	padding-right: 24px;
+	padding-bottom: 0px;
+}
+
+
+.caption{
+	font-size: 12px;
+	font-weight: 100;
+	float:right;
+}
+
+.description{
+	font-weight: 100;
+	margin-bottom: 10px;
+}
+
+a.button{
+	color:black;
+}
+
+.label{
+	height: 40px;
+	width: 100px;
+	border-radius: 5px;
+	background-color: #4585F4;
+	color: #FFFFFF;
+}
+
+.left{
+	float:left;
+}
+
+.right{
+	float:right;
+}
+
+.heading{
+	margin-bottom: 10px;
+}
+
+.textButton{
+	display: table-cell;
+	text-align: center;
+	height: 40px;
+	width: 100px;
+	border-color: #000000;
+	border-radius: 6px;
+	border: 1px solid;
+    text-align:center;
+    vertical-align:middle;
+}
+div span{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.button-1{
+	position:absolute;
+	bottom:0;
+}
+
+.button-2{
+	position: absolute;
+	bottom: 0;
+	margin-left: 160px;
+}
