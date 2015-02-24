@@ -1,9 +1,59 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Rohan Pandit</title>
-	</head>
-	<body>
-		<div> Rohan Pandit </div>
-	</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>African Countries Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/css/vendor/bootstrap.min.css" rel="stylesheet"> 
+    <link href="../dist/css/flat-ui.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+    
+  <body>
+    <div class="container">
+        <div class="row">
+            <h2>African Countries Game</h2>
+        </div>
+            
+        <div class="row">
+            <center>
+                <button id="start" class="btn btn-primary">Start</button>
+                <button id="stop" class="btn btn-primary"> Stop </button>
+            </center>
+        </div>
+        
+        <div class = "row">
+                <center>
+                    <div class="time" id="time">
+                        0:00
+                    </div>
+                    <div id="score">
+                        0/47
+                    </div>            
+                </center>         
+        </div>
+        
+        
+        <div class="row">
+            <input id="input" type="text" placeholder="Well what are you waiting for..." class="form-control" />
+            <!--<button id="enter" class="btn btn-primary">Enter</button>-->
+        </div>
+        
+        <div class="row">
+            <div id="enteredLeft">
+            </div>
+            
+            <div id="enteredRight">
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../dist/js/vendor/jquery.min.js"></script>
+    <script src="../dist/js/vendor/video.js"></script>
+    <script src="../dist/js/flat-ui.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
 </html>
