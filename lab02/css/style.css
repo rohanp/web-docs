@@ -8,6 +8,7 @@ div{
 }
 
 .row{
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -29,4 +30,5 @@ div{
 #start{
     margin-left: auto;
     margin-right: auto;
+    float:right;
 }

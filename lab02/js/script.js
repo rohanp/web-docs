@@ -7,13 +7,30 @@ var pressed = false;
 var m = 5;
 var s = 0;
 var left = true;
-$('#start').focus();
+$('#input').focus();
+
+$(document).keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+      if(!pressed){
+          $('#start').click();
+          pressed = true;
+      }
+    check($('#input').val());
+    return false;  
+  }
+}); 
+
+
 
 $('#score').html(entered.length + '/' + countries.length);
 document.getElementById('input').disabled = true;
 
 $('#start').click( function() {
-    console.log("starting");
+    entered = []
+    $('#start').html('(Re)start');
+    $('#score').html(entered.length + '/' + countries.length);
     start();
     document.getElementById('input').disabled = false;
     $('#input').prop("placeholder", "Now enter an African country...");
@@ -24,10 +41,15 @@ $('#stop').click( function() {
     stop();
 });
 
+
 $('#input').keypress(function (e) {
  var key = e.which;
  if(key == 13)  // the enter key code
   {
+      if(!pressed){
+          $('#start').click();
+          pressed = true;
+      }
     check($('#input').val());
     return false;  
   }
@@ -74,14 +96,14 @@ function stop(){
             console.log("you win");
         }
         else{
-            console.log("you lose");
+            alert("You only got " + entered.length + "/" + countries.length + " correct! Try again ya uncultured swine.");
             for (var i = 0; i < countries.length; i++) {
                 if(entered.indexOf(i) < 0){	
                     if(left){
-                        $("#enteredLeft").append("<div style='float:right'>" + countries[i].caps() + "</div>");
+                        $("#enteredLeft").append("<div style='float:right; color:#E74C3C'>" + countries[i].caps() + "</div>");
                         left = false;
                     } else {
-                        $("#enteredRight").append("<div style='float:left'>" + countries[i].caps() + "</div>");
+                        $("#enteredRight").append("<div style='float:left; color:#E74C3C'>" + countries[i].caps() + "</div>");
                         left = true;
                     }
                         
@@ -100,6 +122,7 @@ function restart(){
     s = 0;
     $("#time").html( m+":0"+s );
     $('#enteredLeft').html( "" );
+    $('#enteredRight').html( "" );
 }
 
 
@@ -117,35 +140,37 @@ function check(answer){
                 entered.push(index);
                 $('#score').html(entered.length + '/' + countries.length);
                 if(left){
-                    $('#enteredLeft').append("<div style='float:right; clear:both'>" + countries[index].caps() + "</div>");
+                    $('#enteredLeft').append("<div style='float:right; clear:both; color:#1ABC9C'>" + countries[index].caps() + "</div>");
                     left = false;
                 }
                 else{
-                    $('#enteredRight').append("<div style='float:left; clear:both'>" + countries[index].caps() + "</div>");
+                    $('#enteredRight').append("<div style='float:left; clear:both; color:#1ABC9C'>" + countries[index].caps() + "</div>");
                     left = true;
                 }
                 $('#input').val('');
                 
-                if(countries.length == entered.length){                    
-                    stop();
-                }
-                
                 checkVictory()
+                return true;
                 
             } else {
                 console.log("already entered");
+                
             }
         }
     }
+    return false;
 }
 
 function checkVictory(){
-    if(entered.length > countries * 0.5){
+    if(entered.length > countries.length * 0.1){
+        console.log("win!");
+        alert("you win! " + entered.length + "/" + countries.length + " is good enough!");
     }
 }
 
 String.prototype.caps = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
+        return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
 }
 
 
