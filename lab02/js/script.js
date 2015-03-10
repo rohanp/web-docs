@@ -13,11 +13,15 @@ $(document).keypress(function (e) {
  var key = e.which;
  if(key == 13)  // the enter key code
   {
+       console.log("ENTER");
       if(!pressed){
           $('#start').click();
           pressed = true;
       }
-    check($('#input').val());
+    /*if(!check($('#input').val())){
+        console.log('error');
+        $('input-container').addClass('has-error');
+    }*/
     return false;  
   }
 }); 
@@ -93,10 +97,12 @@ function stopWatch(){
 function stop(){	
     if(pressed){
         if(countries.length == entered.length){
+            swal("You win!!", "Impressive \n (If you didnt cheat, that is).", "success");
             console.log("you win");
+            restart();
         }
         else{
-            alert("You only got " + entered.length + "/" + countries.length + " correct! Try again ya uncultured swine.");
+            swal("You only got " + entered.length + "/" + countries.length + " correct!", "Try again ya uncultured swine.", "error");
             for (var i = 0; i < countries.length; i++) {
                 if(entered.indexOf(i) < 0){	
                     if(left){
@@ -137,6 +143,7 @@ function check(answer){
         if(index > -1){     //check if is a country
             if(entered.indexOf(index) < 0){ //check if not already entered
                 console.log("correct!");
+                $('input-container').removeClass('has-error');
                 entered.push(index);
                 $('#score').html(entered.length + '/' + countries.length);
                 if(left){
@@ -162,9 +169,9 @@ function check(answer){
 }
 
 function checkVictory(){
-    if(entered.length > countries.length * 0.1){
-        console.log("win!");
-        alert("you win! " + entered.length + "/" + countries.length + " is good enough!");
+    if(entered.length  == countries.length){
+        stop();
+        
     }
 }
 
