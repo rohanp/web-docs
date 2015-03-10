@@ -27,7 +27,7 @@ div{
     display: inline-block;
 }
 
-#start{
-    margin-left: auto;
-    margin-right: auto;
+button{
+    display: block;
+    margin: 0 auto;
 }

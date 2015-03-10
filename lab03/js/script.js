@@ -38,7 +38,7 @@ var dict = {
   "niger": "niamey",
   "nigeria": "abuja",
   "rwanda": "kigali",
-  "sao tome' and principe": "sao tome'",
+  "sao tome and principe": "sao tome",
   "senegal": "dakar",
   "seychelles": "victoria",
   "sierra leone": "freetown",
@@ -47,7 +47,7 @@ var dict = {
   "sudan": "khartoum",
   "swaziland": "mbabane",
   "tanzania": "dar es salaam &amp; dodoma",
-  "togo": "lome'",
+  "togo": "lome",
   "tunisia": "tunis",
   "uganda": "kampala",
   "democratic republic of congo (zaire)": "kinshasa",
@@ -112,6 +112,9 @@ $('#stop').click( function() {
     stop();
 });
 
+$('#skip').click( function() {
+                    getQuestion();
+                 });
 
 $('#input').keypress(function (e) {
  var key = e.which;
