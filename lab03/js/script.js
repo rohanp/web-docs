@@ -166,24 +166,13 @@ function stopWatch(){
     
 function stop(){	
     if(pressed){
-        if(countries.length == entered.length){
+        if(total == entered.length){
             swal("You win!!", "Impressive \n (If you didnt cheat, that is).", "success");
             console.log("you win");
             restart();
         }
         else{
-            swal("You only got " + entered.length + "/" + countries.length + " correct!", "Try again ya uncultured swine.", "error");
-            for (var i = 0; i < countries.length; i++) {
-                if(entered.indexOf(i) < 0){	
-                    if(left){
-                        $("#enteredLeft").append("<div style='float:right; color:#E74C3C'>" + countries[i].caps() + "</div>");
-                        left = false;
-                    } else {
-                        $("#enteredRight").append("<div style='float:left; color:#E74C3C'>" + countries[i].caps() + "</div>");
-                        left = true;
-                    }
-                        
-                }
+            swal("You only got " + entered.length + "/" + total + " correct!", "Try again ya uncultured swine.", "error");
             }
             
         }
