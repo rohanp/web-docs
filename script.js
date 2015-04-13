@@ -10,18 +10,19 @@ document.body.onclick = function(e){
 }
 
 function next(element, considerChildren){
-	if(!element)
+
+	if(element == null)
 		return document.body;
 
 	var nextTarget = element.nextElementSibling;
 
-	if(!nextTarget)
-		return next(element.parentNode)
+	if(nextTarget == null)
+		return nextInDom(element.parentNode)
 
-	if(!nextTarget)
+	if(nextTarget == null)
 		return document.body;
     
-    if(nextTarget.tagName.toLowerCase() == "script")
+    	if(nextTarget.tagName.toLowerCase() == "script")
 		nextTarget = nextTarget.nextElementSibling;
 
 	return nextTarget;

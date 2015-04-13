@@ -1,7 +1,12 @@
-.square{
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-    padding: 10px;
-    background-color: blue;
+div, p {
+    border: 1px solid;
+    border-color: #000000;
+    transition-duration: 0.5s;
+}
+
+div {
+    background: #3498db;
+    height: 100px;
+    margin: 15px;
+    width: 100px;
 }
