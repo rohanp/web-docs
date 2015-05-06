@@ -10,44 +10,29 @@
     <body>
     	<div class="container">
         Hey there <br>
-        <?php
-            if( is_file( 'data.json' ) )
-            {
-		$json = json_decode( file_get_contents( 'data.json' ), true );
-		$json['count'] +=  1;
-		$count = $json['count'];
-		$time = $json['time'];
+        <?php 
+	    $ip = get_client_ip();
+	    $time = time();
 
-		if( $count+1  == 1000000 )
-		{
-			echo "YOU ARE THE MILLIONTH VISTOR. CLICK <a href='http://rohanp.io'> HERE </a> TO CLAIM YOUR PRIZE";
-		}
-		else
-		{
-			echo "You are the " . $count . "th visitor <br>";
-		}
-		
-		echo "Last visited " . date('r', $time) . "<br>" ;		
-		
-		$json['time'] = time();
-                file_put_contents( 'data.json', json_encode( $json )  );
-            	
-	    } else
-	    {
-                echo 1 . '<br>' ;
-                file_put_contents( 'data.json', 
-				'
-				{
-					"count":1
-					"time":' . time() . '
-				}
-				'
-				);
-       
-            }
-	
+	    $db = new SQLite3('stats.db');
 	    
-	    $ipaddress = get_client_ip();
+	    $visitsQuery = $db->prepare("SELECT COALESCE( (SELECT visits FROM stats WHERE id=:id), 0);");
+	    $visitsQuery->bindValue(':id', $ip, SQLITE3_TEXT);
+
+	    $visits = $visitsQuery->execute()->fetchArray()[0];
+	    echo $visits . '<br>';
+
+	    $tstampQuery = $db->prepare("SELECT COALESCE( (SELECT tstamp FROM stats WHERE id=':id'), '$time');");
+	    $tstampQuery->bindValue(':id', $ip, SQLITE3_TEXT);
+
+	    $tstamp = $tstampQuery->execute()->fetchArray()[0];;
+	    echo $tstamp;
+
+	    $visits += 1;
+	    $tstamp = time();
+	    $db->exec("INSERT OR REPLACE INTO table1 (id, visits, tstamp) VALUES (:id, '$visits+1', '$time')");
+
+
 	    echo "Your IP is " . $ipaddress . "<br>";
 	    	
 	function get_client_ip() {
@@ -69,7 +54,6 @@
 	    return $ipaddress;
 	}
 	?>
-	<br>
 	- not the NSA
 	</div>
 
