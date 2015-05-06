@@ -4,7 +4,7 @@
         <link href="../css-frameworks/bootstrap.min.css" rel="stylesheet">
         <link href="../css-frameworks/flat-ui/flat-ui.min.css" rel="stylesheet">
         <link href="../css-frameworks/pure.min.css" rel="stylesheet">
-        <title> Lab 07 </title>
+        <title> Lab 08 </title>
     </head>
     
     <body>
@@ -20,20 +20,22 @@
 	    $visitsQuery->bindValue(':id', $ip, SQLITE3_TEXT);
 
 	    $visits = $visitsQuery->execute()->fetchArray()[0];
-	    echo $visits . '<br>';
 
-	    $tstampQuery = $db->prepare("SELECT COALESCE( (SELECT tstamp FROM stats WHERE id=':id'), '$time');");
+	    $tstampQuery = $db->prepare("SELECT COALESCE( (SELECT tstamp FROM stats WHERE id=:id), '$time');");
 	    $tstampQuery->bindValue(':id', $ip, SQLITE3_TEXT);
 
-	    $tstamp = $tstampQuery->execute()->fetchArray()[0];;
-	    echo $tstamp;
-
+	    $tstamp = $tstampQuery->execute()->fetchArray()[0];
 	    $visits += 1;
+
+	    echo "Your IP is " . $ip . "<br>";
+	    echo "You last visited on " . date('r',  $tstamp) . "<br>";
+	    echo "You have " . $visits . " total visits <br>";
+
 	    $tstamp = time();
-	    $db->exec("INSERT OR REPLACE INTO table1 (id, visits, tstamp) VALUES (:id, '$visits+1', '$time')");
+	    $insert = $db->prepare("INSERT OR REPLACE INTO stats (id, visits, tstamp) VALUES (:id, '$visits+1', '$time');");
+	    $insert->bindValue(':id', $ip, SQLITE3_TEXT);
+	    $insert->execute();
 
-
-	    echo "Your IP is " . $ipaddress . "<br>";
 	    	
 	function get_client_ip() {
 	    $ipaddress = '';
